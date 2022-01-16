@@ -1,7 +1,7 @@
 # DistroWatch_Scraper
 
-* Simple Pyhon Scraper used for extracting data from https://distrowatch.com for new **Linux** distributions
-* Uses Scrapy, look https://docs.scrapy.org/en/latest/ for more information
+* Simple Pyhon Scraper used for extracting data from https://distrowatch.com for new **Linux** distributions.
+* Uses [Scrapy](https://docs.scrapy.org/en/latest/), look for more information on how to extend the project.
 
 
 ## Guide for setting up the project:
