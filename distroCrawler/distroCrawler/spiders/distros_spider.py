@@ -1,6 +1,6 @@
 import scrapy
 import datetime
-
+import os
 
 class DistrosSpider(scrapy.Spider):
     name = "distros"
@@ -22,9 +22,6 @@ class DistrosSpider(scrapy.Spider):
         #Get distro name:
         page = response.url.split("distribution=")[-1].split("&")[0]
         
-        #Create a txt file to store new distros:
-        filename = f'distros-{page}.txt'
-
         #Find the previous month
         first_day_of_month = datetime.date.today().replace(day=1)
         last_month = first_day_of_month - datetime.timedelta(days=1)
@@ -33,11 +30,18 @@ class DistrosSpider(scrapy.Spider):
         #If no data is provided, default to previous month.
         date = getattr(self, 'date', last_month)
 
-
-        #skip first as it contains unneeded info
-        news = response.css("td.News1")[1::]
-        with open(filename, 'w') as f:
+        #Create a txt file to store new distros:
+        filename = f'distros-{page}.txt'
+        save_path = 'distroData' 
+        full_path = os.path.join(save_path, filename)
+        
+        
+        with open(full_path, 'w') as f:
             f.write("**********************************************************************************\n")
+
+            #skip first as it contains unneeded info
+            news = response.css("td.News1")[1::]
+
             for new in news:
                 #Scrape the date of release
                 rows = new.css("table.News > tr")
