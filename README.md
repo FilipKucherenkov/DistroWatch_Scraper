@@ -22,3 +22,5 @@ cd distroCrawler/
 scrapy crawl distros -a date=<input_date> 
 ```
 
+* Data for each distribution is extracted in a separate txt file and placed in the distroData folder.
+
