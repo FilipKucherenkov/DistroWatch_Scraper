@@ -25,7 +25,7 @@ pip install Scrapy
 ```
 cd distroCrawler/
 ```
-## Guide for Setting up the project on Linux Ubuntu:
+## Guide for Setting up the project on Ubuntu 14.04 or above:
 * First Setup a virtual environment by running the following commands:
 ```
 sudo apt install python3-venv
