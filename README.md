@@ -42,7 +42,7 @@ sudo apt-get install python3 python3-dev python3-pip libxml2-dev libxslt1-dev zl
 pip install scrapy
 ```
 
-## Run the following command to scrap data:
+## Run the following command to scrape data:
 * Note: **input_date** is the date until which you want to extract information.
 * For example - "2021-3", which will scrape data for releases after and including March 2021
 ```
