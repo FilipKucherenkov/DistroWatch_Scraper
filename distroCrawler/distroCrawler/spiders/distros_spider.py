@@ -29,7 +29,7 @@ class DistrosSpider(scrapy.Spider):
         #Provide a date until which to scrape data
         #If no data is provided, default to previous month.
         date = getattr(self, 'date', last_month)
-
+        
         #Create a txt file to store new distros:
         filename = f'distros-{page}.txt'
         save_path = 'distroData' 
@@ -38,7 +38,8 @@ class DistrosSpider(scrapy.Spider):
         
         with open(full_path, 'w') as f:
             f.write("**********************************************************************************\n")
-
+            f.write("Last modified: {}\n".format(datetime.date.today()))
+            f.write("**********************************************************************************\n")
             #skip first as it contains unneeded info
             news = response.css("td.News1")[1::]
 

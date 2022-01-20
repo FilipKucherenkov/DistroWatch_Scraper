@@ -1,4 +1,6 @@
 **********************************************************************************
+Last modified: 2022-01-20
+**********************************************************************************
 Release date: 2021-11-11 Distribution Release: Red Hat Enterprise Linux 8.5 
 **********************************************************************************
 Release date: 2021-11-03 Development Release: Red Hat Enterprise Linux 9 Beta 
@@ -8,4 +10,12 @@ Release date: 2021-10-06 Development Release: Red Hat Enterprise Linux 8.5 Beta
 Release date: 2021-05-21 Distribution Release: Red Hat Enterprise Linux 8.4 
 **********************************************************************************
 Release date: 2021-03-31 Development Release: Red Hat Enterprise Linux 8.4 Beta 
+**********************************************************************************
+Release date: 2020-07-28 Development Release: Red Hat Enterprise Linux 8.3 Beta 
+**********************************************************************************
+Release date: 2020-04-29 Distribution Release: Red Hat Enterprise Linux 8.2 
+**********************************************************************************
+Release date: 2020-04-02 Distribution Release: Red Hat Enterprise Linux 7.8 
+**********************************************************************************
+Release date: 2020-01-21 Development Release: Red Hat Enterprise Linux 8.2 Beta 
 **********************************************************************************
