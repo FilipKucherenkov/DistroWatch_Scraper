@@ -44,8 +44,8 @@ pip install scrapy
 
 ## Run the following command to scrap data:
 * Note: **input_date** is the date until which you want to extract information.
-** For example - "2021-3", which will scrape data release after and including March 2021
-** If no arguments are provided, the default date is the previous month.
+* For example - "2021-3", which will scrape data release after and including March 2021
+* If no arguments are provided, the default date is the previous month.
 ```
 scrapy crawl distros -a date=<input_date> 
 ```
