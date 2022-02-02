@@ -1,0 +1,27 @@
+**********************************************************************************
+Last modified: 2022-02-02
+**********************************************************************************
+Release date: 2021-06-23 Distribution Release: SUSE Linux Enterprise 15 SP3 
+**********************************************************************************
+Release date: 2020-07-21 Distribution Release: SUSE Linux Enterprise 15 SP2 
+**********************************************************************************
+Release date: 2019-12-20 Distribution Release: SUSE Linux Enterprise 12 SP5 
+**********************************************************************************
+Release date: 2019-06-24 Distribution Release: SUSE Linux Enterprise 15 SP1 
+**********************************************************************************
+Release date: 2019-03-22 Development Release: SUSE Linux Enterprise 15 SP1 RC 1 
+**********************************************************************************
+Release date: 2018-12-15 Distribution Release: SUSE Linux Enterprise 12 SP4 
+**********************************************************************************
+Release date: 2018-07-19 Distribution Release: SUSE Linux Enterprise 15 
+**********************************************************************************
+Release date: 2017-10-27 Development Release: SUSE Linux Enterprise 15 Beta 1 
+**********************************************************************************
+Release date: 2017-09-07 Distribution Release: SUSE Linux Enterprise 12 SP3 
+**********************************************************************************
+Release date: 2016-11-08 Distribution Release: SUSE Linux Enterprise 12 SP2 
+**********************************************************************************
+Release date: 2015-12-22 Distribution Release: SUSE Linux Enterprise 12 SP1 
+**********************************************************************************
+Release date: 2015-07-17 Distribution Release: SUSE Linux Enterprise 11 SP4 
+**********************************************************************************

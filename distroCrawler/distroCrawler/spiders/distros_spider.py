@@ -1,3 +1,4 @@
+
 import scrapy
 import datetime
 import os
@@ -9,7 +10,7 @@ class DistrosSpider(scrapy.Spider):
         urls = []
 
         # Change this list to include whatever distros are needed. 
-        distro_names = ["ubuntu", "redhat"]
+        distro_names = ["ubuntu", "redhat", "sle", "centos", "oracle", "debian", "fedora"]
 
         #Add all distros we want to crawl
         for name in distro_names:
@@ -28,7 +29,7 @@ class DistrosSpider(scrapy.Spider):
 
         #Provide a date until which to scrape data
         #If no data is provided, default to previous month.
-        date = getattr(self, 'date', last_month)
+        date = getattr(self, 'date', last_month.strftime("%Y-%m-%d"))
         
         #Create a txt file to store new distros:
         filename = f'distros-{page}.txt'
@@ -51,13 +52,17 @@ class DistrosSpider(scrapy.Spider):
 
                 #Scrape the release name
                 distro_name = rows[0].css("td.NewsHeadline")
-                distro_link_field = distro_name.css("a")[1]
-                distro_link_text = distro_link_field.css("::text").get()
-
+                distro_link_field = None
+                if len(distro_name.css("a")) > 1: 
+                    distro_link_field = distro_name.css("a")[1]
+                    distro_link_text = distro_link_field.css("::text").get()
                 
                 date_tokens =  date_text.split("-")
+                 
                 input_date_tokens = date.split("-")
-
+                
+                if distro_link_field == None:
+                    continue
                 #Write only the info which is after the provided as input date
                 if int(input_date_tokens[0]) <= int(date_tokens[0]) and int(input_date_tokens[1]) <= int(date_tokens[1]):
                     f.write("Release date: {0} {1} \n".format(date_text, distro_link_text))
