@@ -1,11 +1,13 @@
 
 import scrapy
+
 import datetime
 import os
 
 class DistrosSpider(scrapy.Spider):
     name = "distros"
-
+    are_distros_updated = {}
+    
     def start_requests(self):
         urls = []
 
@@ -36,10 +38,12 @@ class DistrosSpider(scrapy.Spider):
         save_path = 'distroData' 
         full_path = os.path.join(save_path, filename)
         
-        
+        #Add distro file name
+        self.are_distros_updated.update({filename: False})
+
         with open(full_path, 'w') as f:
-            f.write("**********************************************************************************\n")
-            f.write("Last modified: {}\n".format(datetime.date.today()))
+            # f.write("**********************************************************************************\n")
+            # f.write("Last modified: {}\n".format(datetime.date.today()))
             f.write("**********************************************************************************\n")
             #skip first as it contains unneeded info
             news = response.css("td.News1")[1::]
@@ -65,7 +69,24 @@ class DistrosSpider(scrapy.Spider):
                     continue
                 #Write only the info which is after the provided as input date
                 if int(input_date_tokens[0]) <= int(date_tokens[0]) and int(input_date_tokens[1]) <= int(date_tokens[1]):
+                    self.are_distros_updated[filename] = True
                     f.write("Release date: {0} {1} \n".format(date_text, distro_link_text))
                     f.write("**********************************************************************************\n")
         
-            
+    def closed(self, reason):
+        # will be called when the crawler process ends
+        # Keep only modified files
+        updated_file_names = dict(filter(lambda file: file[1],self.are_distros_updated.items()))
+        if len(updated_file_names) is 0:
+            print("No new releases...")
+            return
+
+        #File can be used to send an email
+        email = open("newly_released.txt", "w")
+        email.write("The following distros have been released: \n")
+        for filename in os.scandir('distroData'):
+            if filename.is_file() and filename.name in updated_file_names:
+                with open(filename.path, 'r') as f:
+                    email.write(f.read())
+    
+    
