@@ -2,8 +2,6 @@
 
 * Simple Python Scraper used for extracting data from https://distrowatch.com for new **Linux** distributions.
 * Uses [Scrapy](https://docs.scrapy.org/en/latest/) - look for more information on how to extend the project.
-* Can be configured to send an email to a specific address containing the crawled data. 
-
 
 ## Guide for setting up the project on MacOS:
 * First Setup a virtual environment by running the following commands:
@@ -55,4 +53,8 @@ scrapy crawl distros
 ```
 
 * Data for each distribution is extracted in a separate txt file and placed in the **distroData** folder.
+
+* Can also be configured to send an email to a specific address containing the crawled data. 
+
+<img width="1361" alt="Screen Shot 2022-03-17 at 01 37 18" src="https://user-images.githubusercontent.com/72323426/158719348-d277d439-ef29-432e-94a3-5f119c0d2205.png">
 
