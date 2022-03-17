@@ -32,17 +32,17 @@ class DistrosSpider(scrapy.Spider):
 
         #Provide a date until which to scrape data
         #If no data is provided, default to previous month.
-        self.target_date = getattr(self,'date', self.last_month.strftime("%Y-%m-%d"))
+        self.target_date = getattr(self,"date", self.last_month.strftime("%Y-%m-%d"))
 
         #Create a txt file to store new distros:
-        filename = f'distros-{page}.txt'
-        dir_name = 'distroData' 
+        filename = f"distros-{page}.txt"
+        dir_name = "distroData"
         full_path = os.path.join(dir_name, filename)
         
         #Dict in the form {distroName:isUpdated}
         self.are_distros_updated.update({filename: False})
 
-        with open(full_path, 'w') as f:            
+        with open(full_path, "w") as f:            
             #skip first as it contains unneeded info
             news = response.css("td.News1")[1::]
 
@@ -78,9 +78,9 @@ class DistrosSpider(scrapy.Spider):
 
     def construct_email_body(self, updated_file_names):
         email_body = "<b>The following distros have been released:</b><ul>"
-        for filename in os.scandir('distroData'):
+        for filename in os.scandir("distroData"):
             if filename.is_file() and filename.name in updated_file_names:
-                with open(filename.path, 'r') as f:
+                with open(filename.path, "r") as f:
                     for line in f.readlines():
                         if "*" not in line:
                             email_body += "<li>" + line + "</li>"
@@ -99,7 +99,11 @@ class DistrosSpider(scrapy.Spider):
 
         email_body = self.construct_email_body(updated_file_names)
         print(email_body)
+
+        # If you want to use another gmail account 
+        # change only the mailfrom, smtpuser and smtppass 
+        # parameters:
         mailer = MailSender(mailfrom="chatroomsmail@gmail.com",smtphost="smtp.gmail.com",smtpport=465,smtpuser="chatroomsmail@gmail.com",smtppass="G1antP1g", smtpssl=True)
-        return mailer.send(to=["f.kucherenkov@gmail.com"],mimetype='text/html', subject="Newly released Linux distros from {} to {}".format(self.target_date, datetime.date.today().strftime("%Y-%m")),body="{}".format(email_body))
+        return mailer.send(to=["f.kucherenkov@gmail.com"], mimetype='text/html', subject="Newly released Linux distros from {} to {}".format(self.target_date, datetime.date.today().strftime("%Y-%m")),body="{}".format(email_body))
     
     
