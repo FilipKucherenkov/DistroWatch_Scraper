@@ -2,6 +2,7 @@
 
 * Simple Pyhon Scraper used for extracting data from https://distrowatch.com for new **Linux** distributions.
 * Uses [Scrapy](https://docs.scrapy.org/en/latest/) - look for more information on how to extend the project.
+* Can be configured to send an email to a specific address containing the crawled data. 
 
 
 ## Guide for setting up the project on MacOS:
